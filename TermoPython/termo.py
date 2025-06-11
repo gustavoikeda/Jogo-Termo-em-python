@@ -27,20 +27,19 @@ def verificador():
 def cor_letras(palavra, palavra_secreta):
     contador = list(palavra_secreta)
     resultado = []
-    certas = []
 
     for i in range(5):
             if palavra[i] == palavra_secreta[i]:
                 resultado.append(colored(palavra[i], 'green'))
-                certas.append(palavra[i])
-                contador.remove(palavra[i])
-
-            elif palavra[i] in contador:
-                resultado.append(colored(palavra[i], 'yellow'))
                 contador.remove(palavra[i])
 
             else:
                 resultado.append(colored(palavra[i], 'white'))
+
+    for j in range(5):
+        if palavra[j] in contador:
+                resultado[j] = (colored(palavra[j], 'yellow'))
+                contador.remove(palavra[j])
 
     resultado = ''.join(resultado)
     return resultado
