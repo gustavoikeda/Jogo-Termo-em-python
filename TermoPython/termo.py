@@ -46,7 +46,7 @@ def cor_letras(palavra, palavra_secreta):
     return resultado
 
 def main():
-    palavra_secreta = "falar"
+    palavra_secreta = random.choice(lista_palavras)
     tentativas = 0
     inicio()
 
