@@ -26,26 +26,27 @@ def verificador():
 
 def cor_letras(palavra, palavra_secreta):
     contador = list(palavra_secreta)
-    resultado = []
+    resultado = ['']*5
 
     for i in range(5):
             if palavra[i] == palavra_secreta[i]:
-                resultado.append(colored(palavra[i], 'green'))
-                contador.remove(palavra[i])
+                resultado[i] = (colored(palavra[i], 'green'))
+                contador[i] = None
 
-            else:
-                resultado.append(colored(palavra[i], 'white'))
 
     for j in range(5):
-        if palavra[j] in contador:
-                resultado[j] = (colored(palavra[j], 'yellow'))
-                contador.remove(palavra[j])
+        if resultado[j] == '':
+            if palavra[j] in contador:
+                    resultado[j] = (colored(palavra[j], 'yellow'))
+                    contador[contador.index(palavra[j])] = None
+            else:
+                    resultado[j] = colored(palavra[j], 'white')
 
     resultado = ''.join(resultado)
     return resultado
 
 def main():
-    palavra_secreta = random.choice(lista_palavras)
+    palavra_secreta = "falar"
     tentativas = 0
     inicio()
 
